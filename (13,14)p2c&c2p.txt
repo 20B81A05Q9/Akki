@@ -1,55 +1,48 @@
 (13,14)Parent to Child and Child to Parent
 
+parent.component.html:
+<div>
+  <h2>Parent Component</h2>
+  <p>Message received from child: {{ childMessage }}</p>
+  <app-child (messageEvent)="receiveMessage($event)"></app-child>
+</div>
 
-1) app.component.ts
-
+parent.component.ts:
 import { Component } from '@angular/core';
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-parent',
+  templateUrl: './parent.component.html',
+  styleUrls: ['./parent.component.css']
 })
-export class AppComponent {
-  messageFromChild!: string;
-  messageFromParent!: string;
+export class ParentComponent {
+  childMessage: string;
 
-  sendMessageToChild(): void {
-    this.messageFromParent = 'Hello from parent component!';
-  }
-
-  receiveMessageFromChild(message: string): void {
-    this.messageFromChild = message;
+  receiveMessage(message: string) {
+    this.childMessage = message;
   }
 }
 
+child.component.html:
 
-2) app.component.html
+<div>
+  <h3>Child Component</h3>
+  <input type="text" [(ngModel)]="message" (keyup)="sendMessage()">
+</div>
 
-<h1>Parent Component</h1>
-<p>Message from child component: {{ messageFromChild }}</p>
-<button (click)="sendMessageToChild()">Send Message to Child</button>
-<app-child [messageFromParent]="messageFromParent" (messageEvent)="receiveMessageFromChild($event)"></app-child>
-
-3) child.component.ts
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+child.component.ts:
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
-  template: `
-    <h2>Child Component</h2>
-    <p>Message from parent component: {{ messageFromParent }}</p>
-    <button (click)="sendMessageToParent()">Send Message to Parent</button>
-  `
+  templateUrl: './child.component.html',
+  styleUrls: ['./child.component.css']
 })
 export class ChildComponent {
-  @Input()
-  messageFromParent!: string;
+  message: string;
+
   @Output() messageEvent = new EventEmitter<string>();
 
-  sendMessageToParent(): void {
-    this.messageEvent.emit('Hello from child component!');
+  sendMessage() {
+    this.messageEvent.emit(this.message);
   }
 }
-
-4) 
