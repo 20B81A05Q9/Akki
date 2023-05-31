@@ -1,17 +1,16 @@
+3. Explain the node modules: os,http,fs etc
 1. os module:
 var os = require('os');
 console.log('cpu architecture: '+os.arch());
 console.log('free memory :'+os.freemem());
 console.log('total memory: '+os.totalmem());
 console.log('os type : ' + os.type());
-
 2. http module:
 var http = require('http');
 http.createServer(function(req,res){
 res.write('hello world!');
 res.end();
 }).listen(8070);
-
 3. fs module:
 const fs = require('fs');
 // Read from a file
