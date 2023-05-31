@@ -1,0 +1,43 @@
+15) Angular Services
+
+1.ng new service-demo
+
+2.cd service-demo
+
+3.ng generate service data
+
+
+data.service.ts
+
+
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class DataService {
+  getData(): string {
+    return 'Hello, World!';
+  }
+}
+
+app.component.ts
+
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Data Service Demo</h1>
+    <p>{{ data }}</p>
+  `,
+  providers: [DataService]
+})
+export class AppComponent {
+  data: string;
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.data = this.dataService.getData();
+  }
+}
