@@ -1,0 +1,59 @@
+form validation in react:
+Create a file called FormValidationExample.Js:
+import React, { useState } from 'react';
+const FormValidationExample = () => {
+const [name, setName] = useState('');
+const [email, setEmail] = useState('');
+const [message,setMessage] = useState('');
+const handleNameChange = (event) => {
+setName(event.target.value);
+};
+const handleEmailChange = (event) => {
+setEmail(event.target.value);
+};
+const handleSubmit = (event) => {
+event.preventDefault();
+if(!(email.includes('@') && email.includes('.')) || /\d/.test(name))
+{
+setMessage('invalid credentials.');
+}
+else
+setMessage('valid credentials.');
+};
+return (
+<div>
+<h2>Form Validation Example</h2>
+<div>
+<p>Name:</p>
+<input
+type="text"
+onChange={handleNameChange}
+/>
+</div>
+<div>
+<p>Email:</p>
+<input
+type="email"
+onChange={handleEmailChange}
+/>
+</div>
+<button type="submit" onClick={handleSubmit}>
+Submit
+</button>
+<p>{message}</p>
+</div>
+);
+};
+export default FormValidationExample;
+in app.js:
+import React from 'react';
+import FormValidationExample from './FormValidationExample.js';
+// App component
+const App = () => {
+return (
+<div>
+<FormValidationExample></FormValidationExample>
+</div>
+);
+};
+export default App
