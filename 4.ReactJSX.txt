@@ -1,26 +1,41 @@
+React:
+Install : npm install react
+Create app : npx create-react-app myapp
+
+
+6. React JSX and components.
+Remove everything in index.js file and type this:
 import React from 'react';
-
-// Class component
-class ClassComponent extends React.Component {
-  render() {
-    return <h2>Hello, World! (Class Component)</h2>;
-  }
+import ReactDOM from 'react-dom';
+// functional JSX component
+const MyComponent = () => {
+const name = 'John Doe';
+const age = 30;
+return (
+<div>
+<h1>Hello, using functional component : {name}!</h1>
+<p>You are {age} years old.</p>
+</div>
+);
+};
+class MyComponent2 extends React.Component {
+constructor(props) {
+super(props);
+this.state = {
+name: 'John Doe',
+age: 30
+};
 }
-
-// Functional component
-const FunctionalComponent = () => {
-  return <h2>Hello, World! (Functional Component)</h2>;
-};
-
-// App component
-const App = () => {
-  return (
-    <div>
-      <h1>React Components</h1>
-      <ClassComponent />
-      <FunctionalComponent />
-    </div>
-  );
-};
-
-export default App;
+render() {
+const { name, age } = this.state;
+return (
+<div>
+<h1>Hello, using class component : {name}!</h1>
+<p>You are {age} years old.</p>
+</div>
+);
+}
+}
+// Render the JSX component
+ReactDOM.render(<><MyComponent /> <MyComponent2/></>, 
+document.getElementById('root'));
