@@ -1,34 +1,40 @@
-1)ParentComponent.js:
-
+. React States and Parent to child and vice-versa communication:
+Create the react app , copy this code in app.js:
 import React, { useState } from 'react';
-import ChildComponent from './ChildComponent';
+// Child component
+const ChildComponent = ({ message, onChildClick }) => {
+return (
+<div>
+<h2>Child Component</h2>
+<p>{message}</p>
+<button onClick={onChildClick}>Click me</button>
+</div>
+);
+};
+// Parent component
 const ParentComponent = () => {
-  const [message, setMessage] = useState('');
-  const handleMessageChange = (newMessage) => {
-    setMessage(newMessage);
-  };
-  return (
-    <div>
-      <h2>Parent Component</h2>
-      <ChildComponent message={message} onMessageChange={handleMessageChange} />
-    </div>
-  );
+const [parentMessage, setParentMessage] = useState('');
+const [childMessage , setChildMessage] = useState('message sent from 
+parent');
+const handleChildClick = () => {
+setParentMessage('Message received from Child');
 };
-export default ParentComponent;
-
-2)ChildComponent.js:
-
-import React from 'react';
-const ChildComponent = ({ message, onMessageChange }) => {
-  const handleMessageSubmit = () => {
-    onMessageChange('Hello from Child Component!');
-  };
-  return (
-    <div>
-      <h3>Child Component</h3>
-      <p>Message received from parent: {message}</p>
-      <button onClick={handleMessageSubmit}>Send Message to Parent</button>
-    </div>
-  );
+return (
+<div>
+<h2>Parent Component</h2>
+<p>{parentMessage}</p>
+<ChildComponent message={childMessage} onChildClick={handleChildClick}
+/>
+</div>
+);
 };
-export default ChildComponent;
+// App component
+const App = () => {
+return (
+<div>
+<h1>React Communication</h1>
+<ParentComponent />
+</div>
+);
+};
+export default App
