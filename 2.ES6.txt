@@ -1,0 +1,59 @@
+// Basic arrow function
+const greet = () => {
+console.log("Hello, world!");
+};
+greet();
+// Arrow function with parameters
+const sum = (a, b) => {
+return a + b;
+};
+console.log(sum(2, 3));
+// Arrow function with implicit return
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 5)); 
+// Arrow function with a single parameter
+const square = x => x * x;
+console.log(square(3)); 
+
+// Destructuring arrays
+const numbers = [1, 2, 3, 4, 5];
+const [first, second, ...rest] = numbers;
+console.log(first); // Output: 1
+console.log(second); // Output: 2
+console.log(rest); // Output: [3, 4, 5]
+// Destructuring objects
+const person = {
+name: "John",
+age: 30,
+address: {
+city: "New York",
+country: "USA",
+},
+};
+const { name:vape, age: agro, address: { city, country } } = person;
+console.log(vape); // Output: John
+console.log("age is : ",agro); // Output: 30
+console.log(city); // Output: New York
+console.log(country); // Output: USA
+
+// Generator function
+function* numberGenerator() {
+yield 1;
+yield 2;
+yield 3;
+}
+const generator = numberGenerator();
+console.log(generator.next().value);
+console.log(generator.next().value); 
+console.log(generator.next().value);
+console.log(generator.next().value);
+// Generator function with parameters
+function* rangeGenerator(start, end, step) {
+for (let i = start; i <= end; i += step) {
+yield i;
+}
+}
+const range = rangeGenerator(1, 10, 2);
+// Iterate over the range using the generator
+console.log(range.next().value); // Output: 1
+console.log(range.next().value); // Output: 3

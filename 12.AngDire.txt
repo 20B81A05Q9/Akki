@@ -1,0 +1,32 @@
+12)Angular Directives
+
+1) app.component.html
+<h1>Angular Directives Demo</h1>
+<!-- ngIf Directive -->
+<h2 *ngIf="showMessage">Welcome to Angular Directives!</h2>
+
+<!-- ngFor Directive -->
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+
+<!-- ngStyle Directive -->
+<p [ngStyle]="{ 'font-weight': isBold ? 'bold' : 'normal', 'font-size': fontSize + 'px' }">
+  This text can be styled dynamically.
+</p>
+
+2) app.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  showMessage = true;
+  items = ['Item 1', 'Item 2', 'Item 3'];
+  isBold = false;
+  fontSize = 14;
+}
