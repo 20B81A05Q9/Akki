@@ -1,0 +1,30 @@
+WE LAB
+1.Create a git repository and clone it for changes and publish the changes using gitbash(Git commands)
+A) step 1:
+Create a new repository.
+ 
+
+Step 2:
+ Copy the repository link.
+ 
+
+Step 3:
+Create an empty folder on your desktop and open gitbash / command prompt in that folder. (navigate to that folder using cd command).
+ 
+Step 4:
+Clone the repository into the current folder using git clone.
+ 
+
+Step 5:
+Create any file and save it in the cloned folder.
+Step 6:
+Use “ git add . “ to add the file to the staging area. And then use git commit -m “message” to commit changes.
+ 
+Step 7:
+push changes to github using git push.
+ 
+Note:
+If it asks for credentials try:
+$ git config --global user.name "username"
+$git config --global user.email “youremail@gmail.com”
+$git config --global user.password "yourpassword"
