@@ -32,3 +32,6 @@ If it asks for credentials try:
 $ git config --global user.name "username"
 $git config --global user.email “youremail@gmail.com”
 $git config --global user.password "yourpassword"
+Proxy setting steps:
+git config --global --add http.proxy http://USERNAME:PASSWORD@PROXY_ADDRESS:PROXY_PORT
+git config --global --add https.proxy http://USERNAME:PASSWORD@PROXY_ADDRESS:PROXY_PORT
