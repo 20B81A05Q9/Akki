@@ -20,6 +20,10 @@ Create any file and save it in the cloned folder.
 Step 6:
 Use “ git add . “ to add the file to the staging area. And then use git commit -m “message” to commit changes.
  
+ git remote add origin 'your_url_name'
+ 
+ git push -u origin master
+ 
 Step 7:
 push changes to github using git push.
  
